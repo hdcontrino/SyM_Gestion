@@ -1,0 +1,482 @@
+<div id="rosco" class="raleway-font">
+    <div class="rosco-container">
+        <div class="rosco-column">
+            <div class="rosco-circle">
+                <h2 class="rosco-center" class="lora-font" data-kubio="kubio/heading">Elementos del Diseño de Carta</h2>
+            </div>
+            <div class="rosco-items"></div>
+        </div>
+
+        <div class="rosco-column">
+            <div class="rosco-content">
+                <h2 id="rosco-title" class="lora-font" data-kubio="kubio/heading">Elementos del Diseño de Carta</h2>
+                <p id="rosco-description">Pasa el mouse sobre una opción para ver la información.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="rosco-carousel">
+        <button class="rosco-prev">&#10094;</button>
+        <div class="rosco-carousel-inner"></div>
+        <button class="rosco-next">&#10095;</button>
+    </div>
+</div>
+
+<style>
+    #rosco {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        --transition: 0.4s ease-in-out;
+        --item-margin: 30vw;
+        --item-size: 10vw;
+        --item-gap: 4vw;
+    }
+
+    .raleway-font {
+        font-family: "Raleway", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .lora-font {
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .rosco-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .rosco-container {
+        display: flex;
+        width: 100%;
+        height: 50vw;
+        min-height: 600px;
+    }
+
+    .rosco-content {
+        position: relative;
+        padding: 3vw;
+        width: 100%;
+        max-width: 90%;
+        min-height: 30vw;
+        border-top-left-radius: 30% !important;
+        border-bottom-left-radius: 30% !important;
+    }
+
+    .rosco-circle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5vw !important;
+        color: white !important;
+    }
+
+    .rosco-center {
+        position: absolute;
+        width: calc(1.5 * var(--item-size));
+        height: calc(1.5 * var(--item-size));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        color: white !important;
+        background: #a77a3b;
+        font-size: 1.5vw !important;
+    }
+
+    #rosco-title {
+        font-size: 2vw !important;
+        color: white;
+    }
+
+    .rosco-items {
+        position: relative;
+        top: calc(var(--item-size) / -2);
+        left: calc(var(--item-size) / -2);
+    }
+
+    .rosco-items div {
+        position: absolute;
+        width: var(--item-size);
+        height: var(--item-size);
+        border-radius: 50%;
+        background-size: cover;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .rosco-items div.active {
+        transform: scale(1.1);
+        filter: brightness(1.4);
+        box-shadow: 0px 0px 15px rgba(167, 122, 59, 0.5);
+    }
+
+    #rosco-description {
+        text-align: left;
+        font-size: 1.3vw !important;
+        color: white !important;
+    }
+
+    .rosco-carousel {
+        position: relative;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    .rosco-carousel-inner {
+        position: relative;
+        display: flex;
+        left: 0;
+        align-items: flex-start;
+        width: max-content;
+        gap: var(--item-gap);
+        transition: var(--transition);
+    }
+
+    .rosco-content, .rosco-card {
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        color: white;
+        background-color: #566476;
+        text-align: center;
+    }
+
+    .rosco-card {
+        padding: 20px;
+        min-height: 400px;
+    }
+
+    .rosco-card h2 {
+        color: white !important;
+        font-size: 1.3rem !important;
+    }
+
+    .rosco-card p {
+        color: white !important;
+        font-size: 4vw !important;
+    }
+
+    .rosco-slide {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: calc(100vw - var(--item-margin));
+        max-width: 500px;
+        flex-shrink: 0;
+        transition: var(--transition);
+        opacity: 0;
+    }
+
+    .rosco-slide img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .rosco-slide-prev,
+    .rosco-slide-next {
+        opacity: 0.7;
+        z-index: 0;
+    }
+
+    .rosco-slide.rosco-slide-prev {
+        transform-origin: right top;
+        transform: skewY(40deg);
+    }
+
+    .rosco-slide.rosco-slide-next {
+        transform-origin: left top;
+        transform: skewY(-40deg);
+    }
+
+    .rosco-slide.rosco-slide-front {
+        transform: skewY(0deg);
+        top: 0;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .rosco-prev, .rosco-next {
+        position: absolute;
+        top: 50vh;
+        width: 30px;
+        height: 30px;
+        padding: 0 !important;
+        transform: translateY(-50%);
+        background: white !important;
+        border: none !important;
+        border-radius: 100% !important;
+        font-size: 12px !important;
+        cursor: pointer;
+        color: #a77a3b !important;
+        z-index: 10;
+    }
+
+    .rosco-prev { left: 10px; }
+    .rosco-next { right: 10px; }
+
+    @media (max-width: 768px) {
+        .rosco-container {
+            display: none;
+        }
+
+        .rosco-carousel {
+            display: flex;
+        }
+    }
+</style>
+
+<script>
+    /** ===========================
+     *       DEFINICIÓN DE ITEMS
+     * =========================== **/
+    const items = [
+        { title: "DISEÑO DE LOS PLATOS Y RECETAS", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Diseno-de-los-platos-y-recetas.png", description: "No solo nos centramos en la rentabilidad y practicidad; también nos aseguramos de que cada plato refleje la misión, visión y valores de tu restaurante.Contamos con chefs experimentados en diversos estilos culinarios y de distintas partes del mundo para garantizar que cada receta sea única y hable por sí misma del carácter de tu establecimiento.Además, trabajamos para optimizar el uso de tus recursos, seleccionando ingredientes que puedan ser utilizados de manera transversal en varios platos, reduciendo costes y minimizando el desperdicio." },
+        { title: "BÚSQUEDA DE DISTRIBUIDORES", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Busqueda-de-distribuidores.png", description: "Nos encargamos de seleccionar proveedores que no solo se ajusten a tus necesidades, sino que también garanticen ingredientes y suministros de alta calidad.Gracias a nuestra amplia red de contactos, podemos negociar mejores precios y condiciones para ti, lo que incluye no solo distribuidores de alimentos, sino también de menaje y maquinaria.Esta selección meticulosa asegura que recibas solo los productos que maximizan la calidad y eficiencia de tu servicio, sin que tengas que invertir tiempo en búsqueda y negociación." },
+        { title: "PRESENTACIÓN DEL PLATO", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Presentacion-del-plato.png", description: "Optimizamos la presentación visual de tus platos para hacerlos irresistibles en la mesa, sin la necesidad de costosas capacitaciones para tu equipo.Nos enfocamos en técnicas de presentación que no solo son sostenibles y se adaptan a las necesidades específicas de tu restaurante, sino que también respetan y refuerzan la imagen de tu marca.Nuestro objetivo es asegurar que cada plato no solo sea un deleite visual, sino que también impulse las ventas, mejorando la percepción general y la experiencia del cliente en tu establecimiento." },
+        { title: "ELABORACIÓN DEL RECETARIO", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Elaboracion-del-recetario.png", description: "Crearemos un recetario claro y detallado, no solo impreso sino también en formato digital, que se convertirá en una herramienta esencial para tu equipo.Este recetario incluirá imágenes de la presentación de cada plato, detalles sobre tiempos de cocción, ingredientes precisos y técnicas necesarias, asegurando así la consistencia y calidad en cada servicio.Al proporcionar esta guía completa, facilitamos el control de gastos y minimizamos errores y desperdicios en la cocina, lo que a su vez optimiza los recursos y mejora la rentabilidad de tu restaurante." },
+        { title: "CÁLCULO DE ESCANDALLOS", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Calculo-de-escandallos.png", description: "Nos ocupamos del cálculo de escandallos, asegurándonos de que los costes de cada plato se ajusten perfectamente para maximizar tus ganancias sin sacrificar la calidad.Implementamos sistemas de gestión avanzados que no solo te ayudan a establecer precios competitivos sino también a reducir las mermas y mejorar la rentabilidad general de tu restaurante.Nuestro enfoque está diseñado para hacer que cada ingrediente cuente, optimizando el uso de recursos y disminuyendo costes innecesarios, lo que se traduce en un aumento directo de tus beneficios." },
+        { title: "DISEÑO Y MAQUETACIÓN DE CARTA", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Diseno-y-maquetacion-de-carta-1.png", description: "Creamos cartas físicas y digitales, que no solo son estéticamente agradables sino también funcionales, destacando los platos más rentables y mejorando la experiencia del cliente.Captamos la atención y fomentamos una rápida toma de decisiones, ayudando a que los clientes elijan platos de manera eficiente.Aseguramos que el diseño refleje la identidad de tu restaurante, con una organización clara que facilita la lectura y la selección, lo que a su vez puede agilizar el servicio y aumentar la satisfacción del cliente." },
+        { title: "FORMACIÓN DEL EQUIPO", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Formacion-del-equipo.png", description: "Ofrecemos formación integral para tu personal, permitiéndote mantener un estándar alto.Un enfoque clave de nuestra formación es asegurar que todo el personal conozca a fondo cada plato.Permitiendo a los camareros responder preguntas y recomendar platos con conocimiento.Nos aseguramos de que la capacitación sea sostenible a largo plazo, reduciendo el tiempo de aprendizaje y maximizando la retención de información.Seguimos de cerca la aplicación de lo aprendido para asegurar resultados óptimos y sostenibles." },
+        { title: "ESTRATEGIA DE PRECIOS", image: "https://usercontent.one/wp/www.symhostelgestion.com/wp-content/uploads/2024/06/Seleccion-de-precios.png", description: "Desarrollamos estrategias de precios efectivas para optimizar tus ingresos basadas en un análisis profundo del mercado.Entendemos los costos de elaboración, los ingredientes y los gastos habituales de tu restaurante.Te asesoraremos para establecer el mejor precio que no solo optimice tu margen, sino que también respete la imagen de tu negocio y considere las expectativas de tus clientes.Nuestro enfoque se centra en encontrar un equilibrio que maximice tus beneficios mientras mantiene la competitividad y la satisfacción del cliente." },
+    ];
+    document.addEventListener("DOMContentLoaded", function () {
+        const rosco = document.getElementById("rosco");
+
+        /** ===========================
+         *       LÓGICA DESKTOP
+         * =========================== **/
+        function initDesktop() {
+            const container = rosco.querySelector(".rosco-items");
+            const titleElement = rosco.querySelector("#rosco-title");
+            const descriptionElement = rosco.querySelector("#rosco-description");
+            const itemSize = parseFloat(getComputedStyle(rosco).getPropertyValue('--item-size'));
+
+            let currentIndex = 0;
+            let interval;
+
+            // Crear elementos del rosco
+            items.forEach((item, index) => {
+                const angle = (360 / items.length) * index;
+                const x = Math.cos(angle * (Math.PI / 180)) * (vwToPx(itemSize) * 1.5);
+                const y = Math.sin(angle * (Math.PI / 180)) * (vwToPx(itemSize) * 1.5);
+
+                const div = document.createElement("div");
+                div.style.backgroundImage = `url(${item.image})`;
+                div.style.transform = `translate(${x}px, ${y}px)`;
+                div.dataset.index = index;
+                div.title = item.title;
+
+                div.addEventListener("mouseenter", function () {
+                    stopInterval();
+                    currentIndex = index;
+                    container.querySelectorAll("div").forEach(el => el.classList.remove("active"));
+                    this.classList.add("active");
+
+                    titleElement.textContent = item.title;
+                    descriptionElement.textContent = item.description;
+                });
+
+                div.addEventListener("mouseleave", startInterval);
+                container.appendChild(div);
+            });
+
+            function highlightNextItem() {
+                const elements = container.querySelectorAll("div");
+                if (currentIndex < 0 || currentIndex >= elements.length) {
+                    currentIndex = 0;
+                }
+
+                elements.forEach(el => el.classList.remove("active"));
+
+                const selectedItem = elements[currentIndex];
+                if (selectedItem) {
+                    selectedItem.classList.add("active");
+                    titleElement.textContent = items[currentIndex].title;
+                    descriptionElement.textContent = items[currentIndex].description;
+                }
+
+                currentIndex = (currentIndex + 1) % elements.length;
+            }
+
+            function startInterval() {
+                if (!interval) {
+                    interval = setInterval(highlightNextItem, 900);
+                }
+            }
+
+            function stopInterval() {
+                clearInterval(interval);
+                interval = null;
+            }
+
+            startInterval();
+        }
+
+        /** ===========================
+         *       LÓGICA MOBILE
+         * =========================== **/
+        function initMobile() {
+            const carousel = rosco.querySelector(".rosco-carousel");
+            const carouselInner = rosco.querySelector(".rosco-carousel-inner");
+            const prevBtn = carousel.querySelector("button.rosco-prev");
+            const nextBtn = carousel.querySelector("button.rosco-next");
+            const itemMargin = parseFloat(getComputedStyle(rosco).getPropertyValue('--item-margin'));
+            const itemGap = parseFloat(getComputedStyle(rosco).getPropertyValue('--item-gap'));
+
+            const threshold = 50;
+            let startX = 0;
+            let endX = 0;
+
+            function createSlideElement(item) {
+                return `
+                    <div class="rosco-slide-image">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="rosco-card">
+                        <h2>${item.title}</h2>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+            }
+
+            function createSlides() {
+                carouselInner.innerHTML = "";
+
+                items.slice(0, 3).forEach((item, index) => {
+                    const slide = document.createElement("div");
+                    const pos = index == 2 ? 'next' : (index == 1 ? 'front' : 'prev');
+                    slide.classList.add("rosco-slide");
+                    slide.classList.add(`rosco-slide-${pos}`);
+                    slide.innerHTML = createSlideElement(item);
+                    slide.dataset.index = index;
+                    carouselInner.appendChild(slide);
+                });
+            }
+
+
+            function movePrev() {
+                const slidePrev = carousel.querySelector(".rosco-slide-prev");
+                const slideFront = carousel.querySelector(".rosco-slide-front");
+                const slideNext = carousel.querySelector(".rosco-slide-next");
+
+                let prevIndex = parseInt(slideFront.dataset.index) - 2;
+                if (prevIndex < 0) prevIndex = items.length + prevIndex;
+
+                let slideBeforePrev = slidePrev?.previousElementSibling;
+                prevBtn.disabled = true
+
+                if (!slideBeforePrev || parseInt(slideBeforePrev.dataset.index) !== prevIndex) {
+                    let newSlide = document.createElement("div");
+                    newSlide.classList.add("rosco-slide", "rosco-slide-prev");
+                    newSlide.dataset.index = prevIndex;
+                    newSlide.innerHTML = createSlideElement(items[prevIndex]);
+                    carouselInner.insertBefore(newSlide, slidePrev);
+                } else {
+                    slideBeforePrev.classList.add("rosco-slide-prev");
+                }
+
+                slidePrev.classList.replace("rosco-slide-prev", "rosco-slide-front");
+                slideFront.classList.replace("rosco-slide-front", "rosco-slide-next");
+                removeSlide(slideNext);
+            }
+
+            function moveNext() {
+                const slidePrev = carousel.querySelector(".rosco-slide-prev");
+                const slideFront = carousel.querySelector(".rosco-slide-front");
+                const slideNext = carousel.querySelector(".rosco-slide-next");
+                
+                let nextIndex = parseInt(slideFront.dataset.index) + 2;
+                if (nextIndex >= items.length) nextIndex = nextIndex - items.length;
+
+                let slideAfterNext = slideNext?.nextElementSibling;
+                nextBtn.disabled = true;
+
+                if (!slideAfterNext || parseInt(slideAfterNext.dataset.index) !== nextIndex) {
+                    let newSlide = document.createElement("div");
+                    newSlide.classList.add("rosco-slide", "rosco-slide-next");
+                    newSlide.dataset.index = nextIndex;
+                    newSlide.innerHTML = createSlideElement(items[nextIndex]);
+                    carouselInner.appendChild(newSlide);
+                } else {
+                    slideAfterNext.classList.add("rosco-slide-next");
+                }
+
+                slideNext.classList.replace("rosco-slide-next", "rosco-slide-front");
+                slideFront.classList.replace("rosco-slide-front", "rosco-slide-prev");
+                removeSlide(slidePrev);
+            }
+
+            function removeSlide(slide) {
+                let transitionValue = getComputedStyle(rosco).getPropertyValue("--transition").trim();
+                let duration = parseFloat(transitionValue) || 400;
+                if (transitionValue.includes("s")) duration *= 1000;
+                slide.style.width = 0;
+                setTimeout(() => {
+                    slide.remove();
+                    prevBtn.disabled = false;
+                    nextBtn.disabled = false;
+                }, duration);
+            }
+
+            function handleTouchStart(event) {
+                startX = event.touches[0].clientX;
+            }
+
+            function handleTouchMove(event) {
+                endX = event.touches[0].clientX;
+            }
+
+            function handleTouchEnd() {
+                const diffX = startX - endX;
+                if (diffX > threshold) {
+                    if (!nextBtn.disabled) moveNext();
+                } else if (diffX < -threshold) {
+                    if (!prevBtn.disabled) movePrev();
+                }
+            }
+
+            createSlides();
+
+            carouselInner.addEventListener("touchstart", handleTouchStart);
+            carouselInner.addEventListener("touchmove", handleTouchMove);
+            carouselInner.addEventListener("touchend", handleTouchEnd);
+
+            prevBtn.addEventListener("click", movePrev);
+            nextBtn.addEventListener("click", moveNext);
+        }
+
+        function vwToPx(vw) {
+            return (vw * window.innerWidth) / 100;
+        }
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            initMobile();
+        } else {
+            initDesktop();
+        }
+    });
+</script>
