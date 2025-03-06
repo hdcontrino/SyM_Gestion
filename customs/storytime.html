@@ -1,0 +1,180 @@
+<div id="storytime">
+    <div id="storytime-1" class="storytime-block raleway-font">
+        <div class="storytime-block-text" style="display: none;">SYM HostelGestión no nace de la nada, sino de años de experiencia en gestión empresarial y de una pasión por la gastronomía que lleva latiendo desde la infancia. Crecer entre fogones, entre aromas que cuentan historias y platos que transmiten emociones, dejaron huella.</div>
+        <div class="storytime-block-image">
+            <img src="img/story1.png" alt="">
+        </div>
+    </div>
+    <div id="storytime-2" class="storytime-block raleway-font reverse-layout">
+        <div class="storytime-block-text" style="display: none;">Pero más allá del amor por la cocina, siempre estuvo presente una vocación clara: hacer que los negocios funcionen, que las ideas cobren vida en una marca y que los restaurantes no solo sobrevivan, sino que prosperen</div>
+        <div class="storytime-block-image">
+            <img src="img/story2.png" alt="">
+        </div>
+    </div>
+</div>
+
+<style> 
+#storytime {
+    width: 100%;
+}
+.storytime-block {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    min-height: 400px;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.storytime-block-text {
+    width: 50%;
+    padding-left: 15%;
+    color: #333;
+    line-height: 1.6;
+    visibility: hidden;
+    z-index: 2;
+}
+.storytime-block-image {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1.2s ease-in-out, width 1.2s ease-in-out;
+}
+.storytime-block-image::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%);
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    transition-delay: 0.2s;
+}
+.storytime-block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease-in-out;
+}
+.shrink-image {
+    position: absolute;
+    right: 0;
+    width: 50% !important;
+    height: 100%;
+    transform: perspective(200px) rotateY(-10deg) scale(0.75);
+}
+.shrink-image::after {
+    opacity: 1;
+}
+.shrink-image img {
+    transition: transform 1.2s ease-in-out;
+}
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    animation: blink 0.5s infinite;
+}
+.reverse-layout {
+    flex-direction: row-reverse;
+}
+.reverse-layout .storytime-block-text {
+    padding-left: 0;
+    padding-right: 15%;
+}
+.reverse-layout .storytime-block-image::after {
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%);
+}
+.reverse-layout .shrink-image {
+    left: 0;
+    transform: perspective(200px) rotateY(10deg) scale(0.75);
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+@keyframes fadeMask {
+    from {
+        mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 50%);
+        -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 50%);
+    }
+    to {
+        mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 1) 50%);
+        -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 1) 50%);
+    }
+}
+@media (max-width: 768px) {
+    .storytime-block-text {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+}
+</style>
+
+<script>
+(function () {
+    const scrollHandlers = {
+        "storytime-1": () => handleScroll(document.getElementById("storytime-1")),
+        "storytime-2": () => handleScroll(document.getElementById("storytime-2"))
+    };
+
+    window.addEventListener("scroll", scrollHandlers["storytime-1"]);
+    window.addEventListener("scroll", scrollHandlers["storytime-2"]);
+
+    function handleScroll(block) {
+        const rect = block.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight * 0.75) {
+            const textContainer = block.querySelector(".storytime-block-text");
+            const imageContainer = block.querySelector(".storytime-block-image");
+
+            if (!block.classList.contains("animated")) {
+                const text = textContainer.innerText;
+                let index = 0;
+
+                textContainer.innerHTML = '';
+                textContainer.style.display = '';
+
+                setTimeout(() => {
+                    imageContainer.classList.add("shrink-image");
+                    setTimeout(() => {
+                        textContainer.style.visibility = "visible";
+                        typeEffect(block, text, index);
+                    }, 500);
+                }, 1000);
+
+                block.classList.add("animated");
+                window.removeEventListener("scroll", scrollHandlers[block.id]);
+            }
+        }
+    }
+
+    function typeEffect(block, text, index) {
+        const textContainer = block.querySelector(".storytime-block-text");
+
+        if (index < text.length) {
+            const pause = text[index] === '.' ? 400 : (text[index] === ',' ? 150 : 0);
+            textContainer.innerHTML += text[index];
+            index++;
+            setTimeout(() => updateText(block, text, index), 0);
+            setTimeout(() => typeEffect(block, text, index), 50 + pause);
+        } else {
+            textContainer.querySelector(".cursor").remove();
+            block.classList.remove("animated");
+        }
+    }
+
+    function updateText(block, text, index) {
+        const textContainer = block.querySelector(".storytime-block-text");
+        const cursor = '<span class="cursor">_</span>';
+        textContainer.innerHTML = text.substring(0, index) + cursor;
+    }
+})();
+</script>
