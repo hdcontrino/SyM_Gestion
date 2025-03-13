@@ -1,0 +1,148 @@
+<div id="vision">
+    <div class="vision-block" id="vision-1">
+        <div class="vision-block-image">
+            <img src="img/vision1.png" alt="">
+        </div>
+        <div class="vision-block-text">
+            <h3>Nuestro destino</h3>
+            <p>Ser el socio estratégico en la gestión integral de restaurantes, ofreciendo soluciones para la mejora
+                operativa, incremento de ventas, formación de empleados, planificación de marketing, y diseño de
+                espacios, ayudando a los propietarios a maximizar el éxito de sus inversiones.</p>
+        </div>
+    </div>
+
+    <div class="vision-block" id="vision-2">
+        <div class="vision-block-image">
+            <img src="img/vision2.png" alt="">
+        </div>
+        <div class="vision-block-text">
+            <h3>El camino que recorremos</h3>
+            <p>Profesionalizar la hostelería transformando equipos, impulsando estrategias de negocio y creando
+                ambientes motivadores. Acompañamos a los líderes para que gestionen con consciencia y empatía, y
+                ayudamos a que los empleados se sientan valorados y formados. Juntos deben alcanzar sus objetivos
+                comerciales.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+#vision {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.vision-block {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vision-block-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.vision-block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vision-block-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 1s ease-in-out;
+}
+
+.vision-block-text h3,
+.vision-block-text p {
+    margin: 0;
+}
+
+.vision-block-text h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 800px;
+    z-index: 2;
+    transition: top 1s ease-in-out;
+}
+
+.vision-block-text p {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 30px) scale(0.8);
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: white;
+    width: 80%;
+    max-width: 800px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1.2s ease-out;
+}
+
+.vision-block.animated p {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+}
+
+.vision-block.animated img {
+    filter: blur(10px);
+}
+
+.vision-block.animated .vision-block-image img {
+    filter: blur(10px);
+}
+.vision-block.animated .vision-block-image::after {
+    background: rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 768px) {
+    .vision-block.animated .vision-block-text h3 {
+        top: 20%;
+    }
+}
+
+</style>
+
+<script>
+(function () {
+    function handleScroll() {
+        const blocks = document.querySelectorAll(".vision-block");
+
+        blocks.forEach((block) => {
+            const rect = block.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight * 0.2) {
+                if (!block.classList.contains("animated")) {
+                    block.classList.add("animated");
+                }
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+})();
+</script>

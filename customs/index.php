@@ -38,6 +38,13 @@
     <hr>
     <div style="height: 200px;"></div>
 
+    <section>
+        <?php include('vision.html'); ?>
+    </section>
+
+    <div style="height: 200px;"></div>
+    <hr>
+    <div style="height: 200px;"></div>
 </body>
 
 </html>
