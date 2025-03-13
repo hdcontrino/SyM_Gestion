@@ -1,0 +1,265 @@
+<div id="accordeon">
+    <div class="accordeon-item">
+        <div class="accordeon-header">Servicialidad y compromiso con el cliente</div>
+        <div class="accordeon-content">Asumimos sus problemas como propios, ofreciendo soluciones proactivas y eficaces para mejorar resultados comerciales y
+        operativos.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Cordialidad, cercanía y humildad</div>
+        <div class="accordeon-content">Nuestra relación con los clientes se basa en el respeto, la humildad y la empatía. construimos relaciones de confianza y
+        colaboración.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Creatividad y colaboración interna</div>
+        <div class="accordeon-content">Fomentamos la creatividad como herramienta clave para mejorar procesos y resultados, promoviendo un ambiente de trabajo
+        colaborativo e innovador.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Respeto y empatía</div>
+        <div class="accordeon-content">Escuchamos y comprendemos las necesidades tanto de los dueños de los negocios como de sus empleados, fomentando un
+        ambiente de respeto mutuo y cooperación.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Prácticas éticas y sostenibles en la hostelería</div>
+        <div class="accordeon-content">Promovemos prácticas laborales justas y responsables, apoyando una cultura empresarial sostenible.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Reducción del desperdicio alimentario</div>
+        <div class="accordeon-content">Trabajamos para optimizar procesos, planificar menús de manera eficiente y fomentar la concienciación sobre la
+        sostenibilidad en la hostelería.</div>
+    </div>
+    <div class="accordeon-item">
+        <div class="accordeon-header">Apoyo a hosteleros con menos recursos</div>
+        <div class="accordeon-content">Devolvemos a la sociedad aquello que nos aporta apoyando a hosteleros con dificultades económicas y contribuyendo a su
+        bienestar.</div>
+    </div>
+</div>
+
+<style>
+#accordeon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    --contentHeight: 500px;
+    --transitionDuration: 0.6s;
+}
+
+.accordeon-item {
+    width: 90%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease-in-out;
+}
+
+.accordeon-header {
+    padding: 35px;
+    color: white;
+    cursor: pointer;
+    font-family: Mulish, Raleway, Sans-Serif, serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: rgba(86, 100, 118, 1);
+}
+.accordeon-header:hover {
+    background-color: rgba(35, 56, 69, 1);
+}
+
+.accordeon-content {
+    font-family: Lora, Sans-Serif, serif;
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.accordeon-item.open {
+    animation: openAnimationItem var(--transitionDuration) ease-in-out forwards;
+}
+.accordeon-item.open .accordeon-header {
+    background-color: rgba(35, 56, 69, 1);
+}
+.accordeon-item.open .accordeon-content {
+    animation: openAnimationContent var(--transitionDuration) ease-in-out forwards;
+}
+.accordeon-item.closing {
+    animation: closeAnimationItem var(--transitionDuration) ease-in-out forwards;
+}
+.accordeon-item.closing .accordeon-content {
+    animation: closeAnimationContent var(--transitionDuration) ease-in-out forwards;
+}
+@keyframes openAnimationContent {
+    0% {
+        transform: scaleX(0.9);
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+        max-height: var(--contentHeight);
+        padding: 15px;
+    }
+}
+@keyframes closeAnimationContent {
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+        max-height: 500px;
+        padding: 15px;
+    }
+    100% {
+        transform: scaleX(0.9);
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+    }
+}
+@keyframes openAnimationItem {
+    0% {
+        transform: scaleX(0.95);
+        clip-path: path("M0,0 Q50% 0%, 100% 0 T100% 100 Q50% 100%, 0 100% T0 0");
+        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+    }
+    50% {
+        transform: scaleX(1.05);
+        clip-path: path("M0,0 Q50% -15px, 100% 0 T100% 100 Q50% 115%, 0 100% T0 0");
+        filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
+    }
+    100% {
+        transform: scaleX(1);
+        clip-path: path("M0,0 Q50% 0%, 100% 0 T100% 100 Q50% 100%, 0 100% T0 0");
+        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+    }
+}
+@keyframes closeAnimationItem {
+    0% {
+        transform: scaleX(0.95);
+        clip-path: path("M0,0 Q50% -15px, 100% 0 T100% 100 Q50% 115%, 0 100% T0 0");
+        filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
+    }
+    50% {
+        transform: scaleX(1.05);
+        clip-path: path("M0,0 Q50% -8px, 100% 0 T100% 100 Q50% 108%, 0 100% T0 0");
+        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+    }
+    100% {
+        transform: scaleX(1);
+        clip-path: path("M0,0 Q50% 0%, 100% 0 T100% 100 Q50% 100%, 0 100% T0 0");
+        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+    }
+}
+</style>
+
+<script>
+    (function () {
+        const items = document.querySelectorAll(".accordeon-item");
+        const readingSpeed = 3;
+
+        let currentIndex = 0;
+        let isRunning = false;
+        let timeoutId = null;
+        let userStopped = false;
+
+        function getTransitionTime() {
+            const transitionValue = getComputedStyle(document.querySelector("#accordeon"))
+                .getPropertyValue("--transitionDuration")
+                .trim();
+
+            return parseFloat(transitionValue) * 1000;
+        }
+
+        function estimateReadingTime(content) {
+            const wordCount = content.textContent.trim().split(/\s+/).length;
+            return Math.max(2000, wordCount / readingSpeed * 1000);
+        }
+
+        function setAccordionState(openIndex, closeIndex) {
+            const openContent = items[openIndex].querySelector(".accordeon-content");
+            const pauseBetweenOpenAndClose = estimateReadingTime(openContent);
+
+            if (items[closeIndex].classList.contains("open")) {
+                items[closeIndex].classList.remove("open");
+                items[closeIndex].classList.add("closing");
+            }
+
+            setTimeout(() => {
+                items[closeIndex].classList.remove("closing");
+            }, getTransitionTime());
+
+            items[openIndex].classList.add("open");
+
+            return pauseBetweenOpenAndClose;
+        }
+
+        function animateAccordion() {
+            if (!isRunning) return;
+
+            const previousIndex = (currentIndex - 1 + items.length) % items.length;
+            const pauseTime = setAccordionState(currentIndex, previousIndex);
+            const transitionTime = getTransitionTime();
+
+            timeoutId = setTimeout(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                animateAccordion();
+            }, transitionTime + pauseTime);
+        }
+
+        function startAnimation() {
+            if (!isRunning) {
+                isRunning = true;
+                animateAccordion();
+            }
+        }
+
+        function stopAnimation() {
+            isRunning = false;
+            clearTimeout(timeoutId);
+        }
+
+        function handleUserAction(index) {
+            items.forEach(i => i.classList.remove("open"));
+            items[index].classList.add("open");
+            currentIndex = index;
+        }
+
+        items.forEach((item, index) => {
+            item.addEventListener("mouseenter", () => {
+                stopAnimation();
+                handleUserAction(index);
+            });
+
+            item.addEventListener("mouseleave", () => {
+                startAnimation();
+            });
+
+            item.addEventListener("click", () => {
+                if (isRunning) {
+                    stopAnimation();
+                    handleUserAction(index);
+                } else {
+                    startAnimation();
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAnimation();
+                } else {
+                    stopAnimation();
+                }
+            });
+        }, { threshold: 0.01 });
+
+        observer.observe(document.querySelector("#accordeon"));
+    })();
+</script>

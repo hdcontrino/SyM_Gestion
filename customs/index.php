@@ -45,6 +45,14 @@
     <div style="height: 200px;"></div>
     <hr>
     <div style="height: 200px;"></div>
+
+    <section>
+        <?php include('accordeon.html'); ?>
+    </section>
+
+    <div style="height: 200px;"></div>
+    <hr>
+    <div style="height: 200px;"></div>
 </body>
 
 </html>
