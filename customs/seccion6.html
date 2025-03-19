@@ -1,0 +1,100 @@
+<div id="seccion6">
+    <div class="seccion6-card" id="seccion6-1">
+        <div class="seccion6-card-front">
+            <h3>Prácticas laborales éticas</h3>
+        </div>
+        <div class="seccion6-card-back">
+            <p>Promovemos ambientes de trabajo justos, respetuosos y motivadores, donde se valora el bienestar de cada
+            empleado.laborales éticas</p>
+        </div>
+    </div>
+    <div class="seccion6-card" id="seccion6-2">
+        <div class="seccion6-card-front">
+            <h3>Reducción del desperdicio alimentario</h3>
+        </div>
+        <div class="seccion6-card-back">
+            <p>Fomentamos el uso de productos de proximidad y temporada, además de trabajar con distribuidores que comparten nuestros
+            valores. Queremos que nuestros clientes adopten medidas que reduzcan el desperdicio alimentario.</p>
+        </div>
+    </div>
+    <div class="seccion6-card" id="seccion6-3">
+        <div class="seccion6-card-front">
+            <h3>Impacto directo en los restaurantes:</h3>
+        </div>
+        <div class="seccion6-card-back">
+            <p>Nos centramos en implementar medidas de sostenibilidad directamente en los restaurantes que asesoramos, ayudándolos a
+            operar de manera más eficiente y respetuosa con el entorno.laborales éticas</p>
+        </div>
+    </div>
+    <div class="seccion6-card" id="seccion6-4">
+        <div class="seccion6-card-front">
+            <h3>Devolver a la sociedad</h3>
+        </div>
+        <div class="seccion6-card-back">
+            <p>A través de iniciativas de apoyo, ayudamos a hosteleros con menos recursos a mejorar sus negocios, contribuyendo al
+            desarrollo sostenible y ético de la hostelería.laborales éticas</p>
+        </div>
+    </div>
+</div>
+
+<style>
+#seccion6 {
+    display: flex;
+    justify-self: center;
+    flex-flow: wrap;
+    justify-content: center;
+    max-width: 960px;
+}
+.seccion6-card {
+    position: relative;
+    height: 200px;
+    width: 300px;
+    margin: 0 20px 50px 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    cursor: pointer;
+}
+.seccion6-card h3 {
+    text-align: center;
+    color: #233845;
+}
+.seccion6-card p {
+    color: white;
+}
+.seccion6-card-front,
+.seccion6-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.seccion6-card-front  {
+    background-color: white;
+}
+
+.seccion6-card-back {
+    background-color: #233845;
+    transform: rotateY(180deg);
+}
+
+.seccion6-card.flipped {
+    transform: rotateY(180deg);
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".seccion6-card").forEach(card => {
+            card.addEventListener("click", function () {
+                card.classList.toggle("flipped");
+            });
+        });
+    });
+</script>

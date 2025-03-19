@@ -1,0 +1,296 @@
+<div id="the-progress-block">
+    <div id="progress-1" class="progress-block raleway-font">
+        <div class="progress-block-text">
+            <p style="color: white;background-color: #566476;">
+                cada restaurante tiene su propia identidad, desafíos y oportunidades. diseñamos soluciones a medida que optimizan la
+                gestión, potencian el talento y elevan la rentabilidad. Nuestra manera de trabajar no se basa solo Si hay algo que nos
+                define, es nuestra capacidad de convertir los problemas en oportunidades y las ideas en realidades. siendo el aliado que
+                impulsa el crecimiento y diferenciación en el sector.
+            </p>
+        </div>
+        <div class="progress-block-step">
+            <div class="progress-line" style="border-top-color: #a77a3b; border-left-color: #a77a3b;">
+                <div class="progress-dot" style="border-color: #a77a3b;"></div>
+                <div class="progress-circle" style="border-color: #a77a3b;">
+                    <div class="progress-inner" style="color: #233845;background-color: white;">1</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-block-title">
+            <p>GESTIÓN CON PROPÓSITO</p>
+        </div>
+    </div>
+    <div id="progress-2" class="progress-block raleway-font">
+        <div class="progress-block-title">
+            <p>DEL PROPÓSITO A LA ESTRATEGIA</p>
+        </div>
+        <div class="progress-block-step">
+            <div class="progress-line" style="border-right-color: #c7a678; border-bottom-color: #c7a678;">
+                <div class="progress-dot" style="border-color: #a77a3b;"></div>
+                <div class="progress-circle" style="border-color: #c7a678;">
+                    <div class="progress-inner" style="color: white;background-color: #566476;">2</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-block-text">
+            <p style="color: white;background-color: #c7a678;">
+                Aportamos herramientas prácticas y estrategias funcionales en el día a día de tu restaurante. Desde mejorar la
+                organización del equipo hasta ayudar a que más clientes te descubran y vuelvan, trabajamos codo a codo con cada negocio.
+                Porque el éxito no solo está en la comida, sino en cómo se gestiona y en la historia detrás de cada plato que tus
+                clientes compartirán.
+            </p>
+        </div>
+    </div>
+    <div id="progress-3" class="progress-block raleway-font">
+        <div class="progress-block-text">
+            <p style="color: white;background-color: #566476;">
+                Si hay algo que nos define, es nuestra capacidad de transformar problemas en soluciones reales. ¿Faltan clientes?
+                Buscamos formas de atraerlos. ¿El equipo no está alineado? Ayudamos a mejorar la comunicación. ¿Las ventas no crecen?
+                Buscamos que está fallando y trabajamos estrategias para fidelizar y atraer más público.
+            </p>
+        </div>
+        <div class="progress-block-step">
+            <div class="progress-line" style="border-top-color: #566476; border-left-color: #566476;">
+                <div class="progress-dot" style="border-color: #c7a678;"></div>
+                <div class="progress-circle" style="border-color: #566476;">
+                    <div class="progress-inner" style="color: white;background-color: #a77a3b;">3</div>
+                </div>
+                <div class="progress-dot-bottom" style="border-color: #566476;"></div>
+            </div>
+        </div>
+        <div class="progress-block-title">
+            <p>DE LA ESTRATEGIA A LA ACCIÓN</p>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes follow-path-1 {
+    0% {
+        transform: rotate(360deg) translate(106px) rotate(-360deg);
+    }
+    50% {
+        transform: rotate(0deg) translate(106px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg) translate(106px) rotate(0deg);
+    }
+}
+@keyframes follow-path-2 {
+    0% {
+        transform: rotate(-90deg) translate(89px) rotate(-90deg);
+    }
+    50% {
+        transform: rotate(270deg) translate(89px) rotate(-270deg);
+    }
+    100% {
+        transform: rotate(270deg) translate(89px) rotate(-270deg);
+    }
+}
+@keyframes follow-path-3 {
+    0% {
+        transform: rotate(360deg) translate(106px) rotate(-360deg);
+    }
+    50% {
+        transform: rotate(0deg) translate(106px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg) translate(106px) rotate(0deg);
+    }
+}
+@keyframes slide-in-flip {
+    0% {
+        transform: rotateY(-90deg) translateX(-50px);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateY(10deg) translateX(10px);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(0deg) translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-in-flip-r {
+    0% {
+        transform: rotateY(90deg) translateX(50px);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateY(-10deg) translateX(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(0deg) translateX(0);
+        opacity: 1;
+    }
+}
+#the-progress-block {
+    width: 100%;
+}
+#the-progress-block.animated #progress-1 .progress-line::before {
+    animation: follow-path-1 4s linear infinite;
+}
+#the-progress-block.animated #progress-1 .progress-block-text p {
+    transform-origin: left center;
+    animation: slide-in-flip 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+#the-progress-block.animated #progress-2 .progress-line::before {
+    animation: follow-path-2 4s linear infinite;
+    animation-delay: 1s;
+}
+#the-progress-block.animated #progress-2 .progress-block-text p {
+    transform-origin: right center;
+    animation: slide-in-flip-r 1.5s ease-out forwards;
+    animation-delay: 1.3s;
+}
+
+#the-progress-block.animated #progress-3 .progress-line::before {
+    animation: follow-path-3 4s linear infinite;
+    animation-delay: 2s;
+}
+#the-progress-block.animated #progress-3 .progress-block-text p {
+    transform-origin: left center;
+    animation: slide-in-flip 1.5s ease-out forwards;
+    animation-delay: 2.5s;
+}
+.progress-block {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: -3px;
+}
+.progress-block-text,
+.progress-block-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    flex-grow: 1;
+}
+.progress-block-text p {
+    position: absolute;
+    padding: 15px;
+    border-radius: 12px;
+    opacity: 0;
+}
+.progress-block-title p {
+    max-width: 200px;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 18px;
+    border-radius: 20px;
+    color: white;
+    background-color: #233845;
+}
+.progress-block-step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+.progress-dot, .progress-dot-bottom {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border: 5px solid;
+    border-radius: 100%;
+    rotate: 45deg;
+}
+.progress-dot {
+    top: 17px;
+    right: 16px;
+}
+.progress-dot-bottom {
+    bottom: 17px;
+    left: 16px;
+}
+.progress-line {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 5px solid transparent;
+    rotate: -45deg;
+}
+.progress-circle {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 25px solid;
+    rotate: 45deg;
+}
+.progress-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.progress-line::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+@media (max-width: 768px) {
+    #the-progress-block {
+        zoom: 0.45;
+    }
+    .progress-block {
+        margin: 0 auto;
+        line-height: 1;
+    }
+}
+</style>
+
+<script>
+(function () {
+    const block = document.getElementById("the-progress-block");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                block.classList.add("animated");
+            } else {
+                block.classList.remove("animated");
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.3
+    });
+
+    observer.observe(block);
+})();
+</script>

@@ -53,6 +53,29 @@
     <div style="height: 200px;"></div>
     <hr>
     <div style="height: 200px;"></div>
+
+    <section>
+        <?php include('progress.html'); ?>
+    </section>
+
+    <div style="height: 200px;"></div>
+    <hr>
+
+    <section>
+        <?php include('seccion5.html'); ?>
+    </section>
+
+    <div style="height: 200px;"></div>
+    <hr>
+    <div style="height: 200px;"></div>
+
+    <section>
+        <?php include('seccion6.html'); ?>
+    </section>
+
+    <div style="height: 200px;"></div>
+    <hr>
+    <div style="height: 200px;"></div>
 </body>
 
 </html>

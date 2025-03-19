@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Precios</title>
+    <style>
+        body {
+            font-family: Raleway, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .pricing-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-switch {
+            display: flex;
+            position: relative;
+            width: 200px;
+            height: 45px;
+            margin: 20px auto;
+            border-radius: 30px;
+            background: #233845;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .toggle-option {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 45px;
+            z-index: 2;
+            position: relative;
+        }
+        .toggle-slider {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: rgba(35, 56, 69, 0.6);
+            border: 4px solid #233845;
+            border-radius: 30px;
+            transition: all 0.4s ease-in-out;
+            left: 0;
+        }
+        .toggle-switch.active .toggle-slider {
+            left: 50%;
+        }
+        .pricing-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .pricing-card {
+            background: #233845;
+            color: white;
+            padding: 20px;
+            width: 30%;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            display: none;
+        }
+        .pricing-card.active {
+            display: flex;
+        }
+        .pricing-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .pricing-card h3 {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #efeeec;
+        }
+        .pricing-card .price {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .pricing-card ul {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+        .plan-logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: auto;
+        }
+.plan-12 h3 {
+            margin-top: 60px;
+        }
+ /* Etiqueta de descuento para planes de 12 meses */
+        .discount-badge {
+            position: absolute;
+            top: -5px;  /* Sobresale del borde */
+            right: 10px; /* Pegado a la derecha */
+            width: 60px; /* Ajusta el tamaño según necesidad */
+        }
+
+        /* Línea dorada debajo del precio */
+        .gold-line {
+            width: 80%;
+            height: 2px;
+            background-color: #c7a678;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="pricing-container">
+        <div class="toggle-switch" onclick="togglePlans()">
+            <div class="toggle-option">6 meses</div>
+            <div class="toggle-option">12 meses</div>
+            <div class="toggle-slider"></div>
+        </div>
+        <div class="pricing-table">
+            <!-- Planes de 6 meses -->
+            <div class="pricing-card plan-6 active">
+                <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/logo-plan-essential-SYMhostelgestion.png" class="plan-logo">
+                <h3>Essentials 6</h3>
+                <div class="price">€799 / month</div>
+<div class="gold-line"></div>
+                <ul>
+                    <li>✅ Diseño y creación de contenido</li>
+                    <li>✅ 1 publicación en el feed por semana (1 reel al mes)</li>
+                    <li>✅ 3 historias por semana</li>
+                    <li>✅ Copywriting</li>
+                    <li>✅ Estudio fotográfico mensual</li>
+                    <li>✅ Professional Monthly Reporting</li>
+                </ul>
+            </div>
+            <div class="pricing-card plan-6 active">
+                <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/logo-plan-Professional-SYMhostelgestion.png" class="plan-logo">
+                <h3>Professional 6</h3>
+                <div class="price">€1.299 / month</div>
+<div class="gold-line"></div>                
+<ul>
+                    <li>✅ Diseño y creación de contenido</li>
+                    <li>✅ 2 publicaciones en el feed por semana (2 reels al mes)</li>
+                    <li>✅ 4 historias por semana</li>
+                    <li>✅ Copywriting</li>
+                    <li>✅ Redacción de bio con link de contacto</li>
+                    <li>✅ Estudio fotográfico mensual</li>
+                    <li>✅ Professional Monthly Reporting</li>
+                </ul>
+            </div>
+            <div class="pricing-card plan-6 active">
+                <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/logo-plan-Enterprise-SYMhostelgestion.png" class="plan-logo">
+                <h3>Enterprise 6</h3>
+                <div class="price">€1.699 / month</div>
+<div class="gold-line"></div>
+                <ul>
+                    <li>✅ Diseño y creación de contenido</li>
+                    <li>✅ 3 publicaciones en el feed por semana (4 reels al mes)</li>
+                    <li>✅ 6 historias por semana</li>
+                    <li>✅ Copywriting</li>
+                    <li>✅ Redacción de bio con link de contacto</li>
+                    <li>✅ Estudio fotográfico mensual</li>
+                    <li>✅ Un sorteo al mes o alguna acción con influencer</li>
+                    <li>✅ Material para WhatsApp Business</li>
+                    <li>✅ Respuesta a mensajes</li>
+                    <li>✅ Professional Monthly Reporting</li>
+                    <li>✅ Gestión Meta BM</li>
+                </ul>
+            </div>
+            <!-- Planes de 12 meses -->
+            <div class="pricing-card plan-12">
+<img class="discount-badge" src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/Etiqueta-10dto.png" alt="10% OFF">
+                <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/logo-plan-essential-SYMhostelgestion.png" class="plan-logo">
+                <h3>Essentials 12</h3>
+                <div class="price">€699 / month</div>
+<div class="gold-line"></div>
+                <ul>
+                    <li>✅ Diseño y creación de contenido</li>
+                    <li>✅ 1 publicación en el feed por semana (1 reel al mes)</li>
+                    <li>✅ 3 historias por semana</li>
+                    <li>✅ Copywriting</li>
+                    <li>✅ Estudio fotográfico mensual</li>
+                    <li>✅ Professional Monthly Reporting</li>
+                </ul>
+            </div>
+<div class="pricing-card plan-12">
+<img class="discount-badge" src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/Etiqueta-10dto.png" alt="10% OFF">
+                <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/logo-plan-Professional-SYMhostelgestion.png" class="plan-logo">
+                <h3>Professional 12</h3>
+                <div class="price">€1.200 / month</div>
+<div class="gold-line"></div>
+                <ul>
+                    <li>✅ Diseño y creación de contenido</li>
+                    <li>✅ 2 publicaciones en el feed por semana (2 reels al mes)</li>
+                    <li>✅ 4 historias por semana</li>
+                    <li>✅ Copywriting</li>
+                    <li>✅ Redacción de bio con link de contacto</li>
+                    <li>✅ Estudio fotográfico mensual</li>
+                    <li>✅ Professional Monthly Reporting</li>
+                </ul>
+            </div>
+            <div class="pricing-card plan-12">
+<img class="discount-badge" src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/Etiqueta-10dto.png" alt="10% OFF">
+    <img src="https://www.symhostelgestion.com/wp-content/uploads/2025/03/Gema-Plan-Enterprise-Premium-SYMHostelGestion-1.gif" class="plan-logo">
+    <h3>Enterprise Premium</h3>
+    <div class="price">€1.600 / mes</div>
+<div class="gold-line"></div>
+    <ul>
+        <li>✅ Diseño y creación de contenido</li>
+        <li>✅ 3 publicaciones en el feed por semana (4 reels al mes)</li>
+        <li>✅ 6 historias por semana</li>
+        <li>✅ Copywriting</li>
+        <li>✅ Redacción de bio con link de contacto</li>
+        <li>✅ Estudio fotográfico mensual</li>
+        <li>✅ Un sorteo al mes o alguna acción con influencer</li>
+        <li>✅ Material para WhatsApp Business</li>
+        <li>✅ Respuesta a mensajes</li>
+        <li>✅ Professional Monthly Reporting</li>
+        <li>✅ Gestión Meta BM</li>
+    </ul>
+</div>
+        </div>
+    </div>
+  <script>
+        function togglePlans() {
+            let toggleSwitch = document.querySelector(".toggle-switch");
+            let isActive = toggleSwitch.classList.toggle("active");
+            let plan6 = document.querySelectorAll(".plan-6");
+            let plan12 = document.querySelectorAll(".plan-12");
+
+            if (isActive) {
+                plan6.forEach(plan => plan.style.display = "none");
+                plan12.forEach(plan => plan.style.display = "flex");
+            } else {
+                plan6.forEach(plan => plan.style.display = "flex");
+                plan12.forEach(plan => plan.style.display = "none");
+            }
+        }
+
+        // Inicializar los planes visibles
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".plan-6").forEach(plan => plan.style.display = "flex");
+            document.querySelectorAll(".plan-12").forEach(plan => plan.style.display = "none");
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

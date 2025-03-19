@@ -1,0 +1,116 @@
+<div id="seccion5">
+    <div class="seccion5-block" id="seccion5-1">
+        <div class="seccion5-block-image">
+            <img src="img/seccion5.png" alt="">
+        </div>
+        <div class="seccion5-block-text">
+            <h3>Estrategia.</h3>
+            <h4>De la visión a la estrategia</h4>
+            <p>Diseñamos estrategias claras y personalizadas que convierten cada restaurante en una marca con identidad propia. No
+            creemos en soluciones genéricas, sino en adaptar cada plan a cada negocio para potenciar su rentabilidad y diferenciarlo
+            de la competencia."</p>
+        </div>
+    </div>
+
+    <div class="seccion5-block" id="seccion5-2">
+        <div class="seccion5-block-image">
+            <img src="img/seccion5.png" alt="">
+        </div>
+        <div class="seccion5-block-text">
+            <h3>Acción</h3>
+            <h4>De la estrategia a la acción</h4>
+            <p>Las ideas solo tienen valor cuando se convierten en resultados. Optimizamos la gestión, el marketing y la experiencia
+            del cliente, transformando espacios gastronómicos y productos con cambios medibles y tangibles</p>
+        </div>
+    </div>
+
+    <div class="seccion5-block" id="seccion5-3">
+        <div class="seccion5-block-image">
+            <img src="img/seccion5.png" alt="">
+        </div>
+        <div class="seccion5-block-text">
+            <h3>Personas</h3>
+            <h4>Las personas hacen el cambio</h4>
+            <p>Ninguna estrategia ni acción funciona sin las personas. Un restaurante fuerte se construye con equipos motivados y
+            alineados. Aplicamos LEGO® SERIOUS PLAY® para fortalecer el liderazgo y la toma de decisiones, Conseguimos que cada
+            persona se involucre en el cambio y sea parte activa de la evolución del negocio.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+#seccion5 {
+    width: 100%;
+}
+.seccion5-block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: calc(100vw / 5.8);
+    overflow: hidden;
+}
+.seccion5-block-image img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+.seccion5-block-text {
+    position: relative;
+    text-align: center;
+    height: 100%;
+}
+.seccion5-block-text h3 {
+    padding: 1% 0;
+    font-size: calc(100vw / 70);
+    color: white;
+}
+.seccion5-block-text h4 {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: calc(100vw / 70);
+    transform: translate(-50%, -50%);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+.seccion5-block-text p {
+    position: absolute;
+    justify-self: anchor-center;
+    width: 50%;
+    font-size: calc(100vw / 80);
+    color: white;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    top: 30%;
+}
+
+.seccion5-block.visible .seccion5-block-text h4 {
+    transform: translate(-92%, -90%) rotate(-45deg) scale(0.75);
+    opacity: 1;
+}
+
+.seccion5-block.visible .seccion5-block-text p {
+    opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function handleScroll() {
+        document.querySelectorAll(".seccion5-block").forEach(block => {
+            const rect = block.getBoundingClientRect();
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                block.classList.add("visible");
+            } else {
+                block.classList.remove("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+});
+</script>
