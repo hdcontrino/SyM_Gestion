@@ -31,7 +31,7 @@
     <div style="height: 200px;"></div>
 
     <section>
-        <?php include('storytime.html'); ?>
+        <?php include('seccion1.html'); ?>
     </section>
 
     <div style="height: 200px;"></div>
@@ -39,7 +39,7 @@
     <div style="height: 200px;"></div>
 
     <section>
-        <?php include('vision.html'); ?>
+        <?php include('seccion2.html'); ?>
     </section>
 
     <div style="height: 200px;"></div>
@@ -47,7 +47,7 @@
     <div style="height: 200px;"></div>
 
     <section>
-        <?php include('accordeon.html'); ?>
+        <?php include('seccion3.html'); ?>
     </section>
 
     <div style="height: 200px;"></div>
@@ -55,7 +55,7 @@
     <div style="height: 200px;"></div>
 
     <section>
-        <?php include('progress.html'); ?>
+        <?php include('seccion4.html'); ?>
     </section>
 
     <div style="height: 200px;"></div>
